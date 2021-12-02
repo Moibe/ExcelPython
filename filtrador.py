@@ -22,8 +22,13 @@ def filtroTotal(**kwargs):
     value_campaña = kwargs.get('value_campaña', '')
     value_cuenta = kwargs.get('value_cuenta', '')
 
-    if texto_cuenta in value_cuenta:
-        print("El texto Finland si está en ésta celda...")
+    # if texto_cuenta in value_cuenta:
+    #     print("El texto Finland si está en ésta celda...")
+        
+    #     return True
+    
+    if texto_campaña in value_campaña:
+        print("El texto 'Digital Download ES' si está en ésta celda...")
         
         return True
     
