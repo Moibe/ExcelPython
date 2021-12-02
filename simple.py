@@ -26,7 +26,7 @@ def obtenExcel(url):
         
         return hoja_excel
 
-def celdaDiaria(hoja_excel):
+def ultimaCelda(hoja_excel):
     
     ultima_celda = hoja_excel.max_row
     print(ultima_celda)
@@ -36,7 +36,7 @@ def celdaDiaria(hoja_excel):
     return ultima_celda
 
 
-def sumaValores(url, celda_inicial, celda_final, columna, hoja_excel):
+def sumaValores(url, celda_inicial, celda_final, hoja_excel):
     
     total = 0
     
@@ -46,11 +46,12 @@ def sumaValores(url, celda_inicial, celda_final, columna, hoja_excel):
             
         celda_campaña = 'Q' + fila_str
         celda_cuenta = 'R' + fila_str 
+        celda_usd = 'K' + fila_str   
         
         campaña = hoja_excel[celda_campaña].value
         cuenta = hoja_excel[celda_cuenta].value
         
-        filtro = filtrador.filtroTotal(filtro_campaña = 'Digital Download ES', filtro_cuenta = 'DeepBlue', campaña = campaña, cuenta = cuenta) 
+        filtro = filtrador.filtroTotal(filtro_campaña = 'Digital Download ES', filtro_cuenta = 'Finland', value_campaña = campaña, value_cuenta = cuenta) 
         
         if filtro is True: 
       
@@ -58,8 +59,7 @@ def sumaValores(url, celda_inicial, celda_final, columna, hoja_excel):
                 
                 fila_str = str(celda_inicial)
                 print("Fila: " + fila_str)
-                celda_sumable = columna + fila_str
-                valor = hoja_excel[celda_sumable].value
+                valor = hoja_excel[celda_usd].value
                 #Aquí estamos filtrando las excepciones, en éste caso 0 y neg.
                 valor = filtrador.filtroNumeros(valor)
                 total = total + valor

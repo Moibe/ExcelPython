@@ -17,13 +17,13 @@ def filtroNumeros(valor):
 
 def filtroTotal(**kwargs):
     
-    filtro_campaña = kwargs.get('filtro_campaña', '')
-    filtro_cuenta = kwargs.get('filtro_cuenta', '')
-    campaña = kwargs.get('campaña', '')
-    cuenta = kwargs.get('cuenta', '')
+    texto_campaña = kwargs.get('filtro_campaña', '')
+    texto_cuenta = kwargs.get('filtro_cuenta', '')
+    value_campaña = kwargs.get('value_campaña', '')
+    value_cuenta = kwargs.get('value_cuenta', '')
 
-    if cuenta in celda_cuenta:
-        print("El texto si está en ésta celda...")
+    if texto_cuenta in value_cuenta:
+        print("El texto Finland si está en ésta celda...")
         
         return True
     
