@@ -36,34 +36,54 @@ def ultimaCelda(hoja_excel):
     return ultima_celda
 
 
-def sumaValores(url, celda_inicial, celda_final, hoja_excel):
+def sumaValores(**kwargs):
     
+    filtro_campaña = kwargs.get('filtro_campaña', 'nada')
+    filtro_cuenta = kwargs.get('filtro_cuenta', 'nada')
+    url = kwargs.get('url', 'nada')
+    celda_inicial = kwargs.get('celda_inicial', 'nada')
+    celda_final = kwargs.get('celda_final', 'nada')
+    hoja_excel = kwargs.get('hoja_excel', 'nada')
+    
+    
+    url, celda_inicial, celda_final, hoja_excel
     total = 0
     
     for celda_inicial in range(celda_inicial, celda_final):
         
         fila_str = str(celda_inicial)
-            
+        
+        celda_estado = 'G' + fila_str     
         celda_campaña = 'Q' + fila_str
         celda_cuenta = 'R' + fila_str 
         celda_usd = 'K' + fila_str   
         
+        estado = hoja_excel[celda_estado].value
+        print(estado)
         campaña = hoja_excel[celda_campaña].value
         cuenta = hoja_excel[celda_cuenta].value
         
-        filtro = filtrador.filtroTotal(value_campaña = campaña, value_cuenta = cuenta) 
+        #Si no se agregó ninguno de los dos filtros, entonces no se usará el filtroTotal.
+        if "nada" in filtro_campaña and "nada" in filtro_cuenta:
+            filtro = True
+        else:
+            filtro = filtrador.filtroTotal(texto_campaña = filtro_campaña, texto_cuenta = filtro_cuenta, value_campaña = campaña, value_cuenta = cuenta) 
         
         if filtro is True: 
       
             try: 
                 
-                fila_str = str(celda_inicial)
-                print("Fila: " + fila_str)
-                valor = hoja_excel[celda_usd].value
-                #Aquí estamos filtrando las excepciones, en éste caso 0 y neg.
-                valor = filtrador.filtroNumeros(valor)
-                total = total + valor
-                print(total)
+                #Solo trabaja con las celdas cuyo estado es Completed.
+                if(filtrador.filtroEstado(estado)) is True: 
+                    
+                    #Obten el valor original de la celda.
+                    valor = hoja_excel[celda_usd].value
+                    #Aquí estamos filtrando las excepciones, en éste caso 0 y neg.
+                    #Si es 0 o negativo sumará 0. Si no, el valor real.
+                    valor = filtrador.filtroNumeros(valor)
+                   
+                    total = total + valor
+                        
                 
             except: 
                         print("Error....")
