@@ -50,9 +50,9 @@ def sumaValores(url, celda_inicial, celda_final, columna, hoja_excel):
         campaña = hoja_excel[celda_campaña].value
         cuenta = hoja_excel[celda_cuenta].value
         
-        filtro = filtrador.filtroTotal(campaña = campaña, cuenta = cuenta) 
+        filtro = filtrador.filtroTotal(filtro_campaña = 'Digital Download ES', filtro_cuenta = 'DeepBlue', campaña = campaña, cuenta = cuenta) 
         
-        if filtro is true: 
+        if filtro is True: 
       
             try: 
                 
@@ -68,8 +68,8 @@ def sumaValores(url, celda_inicial, celda_final, columna, hoja_excel):
             except: 
                         print("Error....")
                         
-         else: 
-             print ("El filtro fue false...")
+        else: 
+            print ("El filtro fue false...")
                     
         
     

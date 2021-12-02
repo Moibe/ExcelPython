@@ -17,6 +17,8 @@ def filtroNumeros(valor):
 
 def filtroTotal(**kwargs):
     
+    filtro_campaña = kwargs.get('filtro_campaña', '')
+    filtro_cuenta = kwargs.get('filtro_cuenta', '')
     campaña = kwargs.get('campaña', '')
     cuenta = kwargs.get('cuenta', '')
 
