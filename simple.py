@@ -29,10 +29,11 @@ def obtenExcel(url):
 def celdaDiaria(hoja_excel):
     
     ultima_celda = hoja_excel.max_row
+    print(ultima_celda)
     #Ésta función puede definir la celda hasta el momento.
     #Pero también la última del día para usarse o nutrir un json.
     
-    return 0
+    return ultima_celda
 
 
 def sumaValores(url, celda_inicial, celda_final, columna, hoja_excel):

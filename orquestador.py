@@ -9,7 +9,10 @@ import simple
 
 url = 'https://www.coding-depot.dev/paypalinfosample.xlsx'
 
-r = simple.obtenExcel(url)
+excel = simple.obtenExcel(url)
 
-resultado = simple.sumaValores(url, 9100, 9200, 'K')
-print(resultado)
+print("Aquí va a imprimir directamente la última celda...")
+print(simple.celdaDiaria()) 
+
+# resultado = simple.sumaValores(url, 9100, 9200, 'K')
+# print(resultado)
