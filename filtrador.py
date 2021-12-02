@@ -23,8 +23,8 @@ def filtroEstado(estado):
     
 def filtroTotal(**kwargs):
     
-    texto_campaña = kwargs.get('filtro_campaña', 'nada')
-    texto_cuenta = kwargs.get('filtro_cuenta', 'nada')
+    texto_campaña = kwargs.get('texto_campaña', 'nada')
+    texto_cuenta = kwargs.get('texto_cuenta', 'nada')
     value_campaña = kwargs.get('value_campaña', '')
     value_cuenta = kwargs.get('value_cuenta', '')
     

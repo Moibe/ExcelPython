@@ -39,7 +39,11 @@ def ultimaCelda(hoja_excel):
 def sumaValores(**kwargs):
     
     filtro_campaña = kwargs.get('filtro_campaña', 'nada')
+    print("Este es el filtro de la campaña-campaña...")
+    print(filtro_campaña)
     filtro_cuenta = kwargs.get('filtro_cuenta', 'nada')
+    print("Este es el filtro de la cuenta-cuenta...")
+    print(filtro_cuenta)
     url = kwargs.get('url', 'nada')
     celda_inicial = kwargs.get('celda_inicial', 'nada')
     celda_final = kwargs.get('celda_final', 'nada')
