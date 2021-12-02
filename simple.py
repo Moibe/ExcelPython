@@ -51,7 +51,7 @@ def sumaValores(url, celda_inicial, celda_final, hoja_excel):
         campaña = hoja_excel[celda_campaña].value
         cuenta = hoja_excel[celda_cuenta].value
         
-        filtro = filtrador.filtroTotal(filtro_campaña = 'Digital Download ES', filtro_cuenta = 'Finland', value_campaña = campaña, value_cuenta = cuenta) 
+        filtro = filtrador.filtroTotal(value_campaña = campaña, value_cuenta = cuenta) 
         
         if filtro is True: 
       
