@@ -6,6 +6,8 @@ Filtra valores, devuelve el valor o 0 si no cumplió los criterios.
 @author: Moibe
 """
 
+import time 
+
 def filtroNumeros(valor):
     if (valor>0):
         print(valor)
@@ -23,33 +25,48 @@ def filtroEstado(estado):
     
 def filtroTotal(**kwargs):
     
-    texto_campaña = kwargs.get('texto_campaña', 'nada')
-    texto_cuenta = kwargs.get('texto_cuenta', 'nada')
+    texto_campaña = kwargs.get('filtro_campaña', '')
+    texto_cuenta = kwargs.get('filtro_cuenta', '')
     value_campaña = kwargs.get('value_campaña', '')
     value_cuenta = kwargs.get('value_cuenta', '')
+    
+    
     
     print("Texto campaña")
     print(texto_campaña)
     print("Texto cuenta")
     print(texto_cuenta)
+    print("Value campaña")
+    print(value_campaña)
+    print("Value cuenta")
+    print(value_cuenta)
      
     if "nada" not in texto_campaña:
         if texto_campaña in value_campaña:
             print("El texto buscado si está en ésta celda...")
+            time.sleep(3)
             #Por lo tanto ahora debes buscar si está el segundo requisito...
             if "nada" not in texto_cuenta: 
                 if texto_cuenta in value_cuenta:
                     print("El texto buscado si está en ésta celda...")
+                    time.sleep(3)
                     #Los dos valores buscados si están en la fila, usa el valor.
                     return True
                 else: 
                     #No encontró el segundo requisito, por eso será false.
+                    print("El texto buscado NONONONONO está en la cuenta...")
+                    time.sleep(3)
                     return False
             else: 
                 #La segunda busqueda no se hizo, pero como si hubo la primera, cumple el requisito.
+                print("El texto buscado NONONONONO está en la cuenta...")
+                time.sleep(3)
                 return True
         else: 
             #Si el texto no está en campaña, ya no tiene caso buscar en texto_cuenta, regresa false.
+            print("El texto buscado NONONONONO está en la cuenta...")
+            time.sleep(3)
+            return False
             return False
     else:
         #Aquí llega si va vacio el texto campaña, aún así hay que evaluar texto_cuenta.
@@ -59,9 +76,13 @@ def filtroTotal(**kwargs):
                   return True
               else: 
                   #Si no encontró el texto no cumplió los dos requisitos regresa falso.
+                  print("El texto buscado NONONONONO está en la cuenta...")
+                  time.sleep(3)
                   return False
           else:
              #Aquí nunca debería llegar porque si los dos venían vacios la función no se debio ejecutar. 
+             print("El texto buscado NONONONONO está en la cuenta...")
+             time.sleep(3)
              return False
             
                 

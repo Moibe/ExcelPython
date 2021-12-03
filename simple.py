@@ -8,10 +8,11 @@ Suma los totales entre dos rangos de celdas.
 import requests
 import openpyxl
 import filtrador 
+import time
 
 def obtenExcel(url):
 
-        print("Descarga y revisión de datos de Paypal...")
+        #Descarga y revisión de datos de Paypal...
         #Baja el excel indicado en la URL. 
         r = requests.get(url, allow_redirects=True)
         
@@ -50,17 +51,27 @@ def sumaValores(**kwargs):
     hoja_excel = kwargs.get('hoja_excel', 'nada')
     
     
-    url, celda_inicial, celda_final, hoja_excel
+    
     total = 0
+    print("Éste es el tipo de la variable TOTAL...")
+    print(type(total))
+    iteraciones = 0
+    print(total)
     
     for celda_inicial in range(celda_inicial, celda_final):
         
+        print("NUEVA ITERACIÓN...")
+        iteraciones += 1
+        print(iteraciones)
+        time.sleep(3)
         fila_str = str(celda_inicial)
         
         celda_estado = 'G' + fila_str     
         celda_campaña = 'Q' + fila_str
         celda_cuenta = 'R' + fila_str 
         celda_usd = 'K' + fila_str   
+        a = 'Moi'
+        b = 'Solo'
         
         estado = hoja_excel[celda_estado].value
         print(estado)
@@ -71,7 +82,18 @@ def sumaValores(**kwargs):
         if "nada" in filtro_campaña and "nada" in filtro_cuenta:
             filtro = True
         else:
-            filtro = filtrador.filtroTotal(texto_campaña = filtro_campaña, texto_cuenta = filtro_cuenta, value_campaña = campaña, value_cuenta = cuenta) 
+            print("Éste es el texto-texto que le estamos pasando como filtro_campaña...")
+            print(filtro_campaña)
+            time.sleep(3)
+            print("Éste es el texto-texto que le estamos pasando como filtro_cuenta...")
+            print(filtro_cuenta)
+            time.sleep(3)
+            a = str(filtro_campaña)
+            b = str(filtro_cuenta)
+            filtro = filtrador.filtroTotal(texto_campaña = a, texto_cuenta = b, value_campaña = campaña, value_cuenta = cuenta) 
+            print("ESTE ES EL RESULTADO DEL FILTRAJE TOTAL...")
+            print(filtro)
+            
         
         if filtro is True: 
       
@@ -82,11 +104,15 @@ def sumaValores(**kwargs):
                     
                     #Obten el valor original de la celda.
                     valor = hoja_excel[celda_usd].value
+                    print("ESTE ES EL VALOR QUE TIENE LA CELDA...")
+                    print(valor)
                     #Aquí estamos filtrando las excepciones, en éste caso 0 y neg.
                     #Si es 0 o negativo sumará 0. Si no, el valor real.
                     valor = filtrador.filtroNumeros(valor)
                    
                     total = total + valor
+                    print("Si estamos SUMANDO, el total va en....")
+                    print(total)
                         
                 
             except: 
