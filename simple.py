@@ -9,28 +9,23 @@ import requests
 import openpyxl
 import filtrador 
 import time
-import json
 
-def obtenExcel(url):
 
-    print("Descarga de Json con los valores actuales. ") 
-    
-    with open('rango.json') as fp:
-        js_param = json.load(fp)
-
-def obtenExcel(url):
-
-        #Descarga y revisión de datos de Paypal...
+def obtenExcel(url, archivo):
+      
         #Baja el excel indicado en la URL. 
-        r = requests.get(url, allow_redirects=True)
+        #Si la url tuviera un 0 significa que el archivo no baja, que está en local.
+        if url is not 0 :
+            
+            r = requests.get(url, allow_redirects=True)
         
-        #Guardalo para trabajar con él.
-        open('Paypal.xlsx', 'wb').write(r.content)
+        #Ábrelo para trabajar con él.
+        open(archivo, 'wb').write(r.content)
 
         
         print("Creando objetos de stream de Paypal.")
         #Crea los objetos con los que trabajarás el MoneyStream.
-        libro_excel = openpyxl.load_workbook("Paypal.xlsx")
+        libro_excel = openpyxl.load_workbook(archivo)
         hoja_excel = libro_excel.active
         
         return hoja_excel
