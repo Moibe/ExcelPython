@@ -13,7 +13,8 @@ excel = simple.obtenExcel(url)
 
 last_cell = simple.ultimaCelda(excel)
 
-
-resultado = simple.sumaValores(filtro_campaña = 'Digital Download ES', filtro_cuenta = 'Finland', url=url, celda_inicial = 9291, celda_final = last_cell, hoja_excel= excel)
-print("Éste es el gran resultado final-final...")
+#Usar éstas variables.
+#filtro_cuenta = 'MMC'
+#filtro_producto = "EN"
+resultado = simple.sumaValores(celda_inicial = 9291, celda_final = last_cell, hoja_excel= excel)
 print(resultado)

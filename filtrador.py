@@ -23,33 +23,14 @@ def filtroEstado(estado):
         print("Éste estado es True...")
         return True
     
-def filtroTotal(**kwargs):
+def filtroTotal(texto_producto, texto_cuenta, value_producto, value_cuenta):
     
-    texto_campaña = kwargs.get('filtro_campaña', '')
-    texto_cuenta = kwargs.get('filtro_cuenta', '')
-    value_campaña = kwargs.get('value_campaña', '')
-    value_cuenta = kwargs.get('value_cuenta', '')
-    
-    
-    
-    print("Texto campaña")
-    print(texto_campaña)
-    print("Texto cuenta")
-    print(texto_cuenta)
-    print("Value campaña")
-    print(value_campaña)
-    print("Value cuenta")
-    print(value_cuenta)
-     
-    if "nada" not in texto_campaña:
-        if texto_campaña in value_campaña:
-            print("El texto buscado si está en ésta celda...")
-            time.sleep(3)
+    if "nada" not in texto_producto:
+        if texto_producto in value_producto:
+           
             #Por lo tanto ahora debes buscar si está el segundo requisito...
             if "nada" not in texto_cuenta: 
                 if texto_cuenta in value_cuenta:
-                    print("El texto buscado si está en ésta celda...")
-                    time.sleep(3)
                     #Los dos valores buscados si están en la fila, usa el valor.
                     return True
                 else: 
